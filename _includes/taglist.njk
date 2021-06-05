@@ -1,0 +1,10 @@
+<div class="container mt-3">
+{% for tag in collections.tagList %}
+	<div class="row">
+		<a href="tags/{{ tag }}/index.html">
+			{{ tag }}
+		</a>
+	</div>
+{% endfor %}
+</div>
+

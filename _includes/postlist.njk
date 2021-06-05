@@ -1,0 +1,21 @@
+<div class="container mt-3">
+{% for post in postslist %}
+	<div class="row pt-3 position-relative">
+		<div class="col-12 w-100">
+		<a href="{{ post.url | url }}" class="stretched-link"></a>
+		{% if post.data.title %}
+			<h3>{{ post.data.title }}</h3>
+		{% endif %}
+		<span>
+		{% if post.data.description %}
+			{{ post.data.description }}
+		{% endif %}
+		</span>
+		<br>
+		<time>
+			{{ post.date }}
+		</time>
+		</div>
+	</div>
+{% endfor %}
+</div>  

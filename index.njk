@@ -1,5 +1,37 @@
 ---
-layout: layouts/base.njk
+title: Code 1537
+description: Hack you :)
+layout: layouts/home.njk
+date: Last Modified
 ---
 
-<h1>This is Rui</h1>
+<div class="container-fluid">
+  <div class="row">
+		<!-- Tag list -->
+		<div class="col-md-2">
+			<div class="container">
+				<div class="row">
+					<h4>Tags</h4>
+				</div>
+				{% include "taglist.njk" %}
+			</div>
+		</div> 	    
+
+		<!-- Recent posts -->
+		<div class="col-md">
+			<div class="container">
+				<div class="row">
+					<h4>Recent posts</h4>
+				</div>
+				<div class="row">
+					{% set postslist = collections.posts %}
+					{% include "postlist.njk" %}
+				</div>			
+			</div>
+		</div>  
+
+  </div>  
+</div>  
+
+
+

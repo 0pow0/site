@@ -1,17 +1,35 @@
-const fs = require("fs");
+const fs = require('fs');
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
+
 
 module.exports = function(eleventyConfig) {
+	// Pass throughs 
   eleventyConfig.addPassthroughCopy('resources');
   eleventyConfig.addPassthroughCopy('favicon.ico');
+
+	// Plugins
+	eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+	// Watches
+	eleventyConfig.addWatchTarget('./_11ty/');
+	
+	// Collections
+	eleventyConfig.addCollection('tagList', require('./_11ty/getTagList'));	
+
+	// Filters
+	  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+  });
 
 	return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
     templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
+      'md',
+      'njk',
+      'html',
+      'liquid'
     ],
 
     // -----------------------------------------------------------------
@@ -25,24 +43,24 @@ module.exports = function(eleventyConfig) {
     // You can also pass this in on the command line using `--pathprefix`
 
     // Optional (default is shown)
-    pathPrefix: "/",
+    pathPrefix: '/',
     // -----------------------------------------------------------------
 
     // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
+    markdownTemplateEngine: 'njk',
 
     // Pre-process *.html files with: (default: `liquid`)
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: 'njk',
 
     // Opt-out of pre-processing global data JSON files: (default: `liquid`)
     dataTemplateEngine: false,
 
     // These are all optional (defaults are shown):
     dir: {
-      input: ".",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
+      input: '.',
+      includes: '_includes',
+      data: '_data',
+      output: '_site'
     }
   };
 }
