@@ -4,11 +4,8 @@ description: this is my first post!
 layout: "layouts/base"
 tags:
   - posts
-	- cpp
-	- java
-	- python
-	- omnet
-	- vim
+  - java
+  - cpp
 date: Last Modified
 ---
 
