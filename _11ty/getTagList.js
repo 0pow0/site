@@ -1,6 +1,6 @@
 module.exports = function(collection) {
 	let tagSet = new Set();
-	const includeTag = ['Java', 'Python'];
+	const includeTag = ['java', 'python', 'cpp'];
 	collection.getAll().forEach((item) => {
 		if ('tags' in item.data) {
 			let tags = item.data.tags;
